@@ -22,15 +22,20 @@ class HelloWorld extends Component {
     super(props);
     this.state = { greeting: 'Hello' };
   }
-  // JSX is templating language that look like HTML. Wrapped in {}, reserved word className.
-  // React components must only return a SINGLE JSX node at its root! So wrap components that might have multiple children in single div.
-  // content modification: add "this" keyword to props.name. This tells JavaScript that the component's properties live inside of the class.
+  // specify onClick event handler in button that calls a frenchify function on the HelloWorld class
   render() {
     return (
       <div className="HelloWorld">
         {this.state.greeting} {this.props.name}!
-      </div> // props is defined in App.js in "name="
+        <br />
+        <button onClick={this.frenchify}>Frenchify!</button>
+      </div>
     );
+  }
+  // the frenchify function. NOTE: this function doesn't work, because we are modifying state object inside class directly!
+  // error: Cannot read property 'setState' of undefined.
+  frenchify() {
+    this.setState({ greeting: 'Bonjour' });
   }
 }
 
