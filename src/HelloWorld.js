@@ -21,6 +21,7 @@ class HelloWorld extends Component {
   constructor(props) {
     super(props);
     this.state = { greeting: 'Hello' };
+    this.frenchify = this.frenchify.bind(this);
   }
   // specify onClick event handler in button that calls a frenchify function on the HelloWorld class
   render() {
@@ -34,6 +35,8 @@ class HelloWorld extends Component {
   }
   // the frenchify function. NOTE: this function doesn't work, because we are modifying state object inside class directly!
   // error: Cannot read property 'setState' of undefined.
+  // any events that need to access internal object details need to be explicitly bound to that instance of that component. aka, "this.frenchify" doesn't know how to call "this.setState" b/c it doesn't know what "this" is.
+  // fix: add this.frenchify = this.frenchify.bind(this) to constructor. This tells JavaScript "Hey, anytime you see a ref to this inside frenchify function, refer specifically to ME"
   frenchify() {
     this.setState({ greeting: 'Bonjour' });
   }
