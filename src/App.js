@@ -12,8 +12,8 @@ const App = () => {
   // root div renders a child HelloWorld component
   return (
     <div className="App">
-      <HelloWorld />
-      <HelloWorld />
+      <HelloWorld name="Brian" />
+      <HelloWorld name="Jaz" />
     </div>
   );
 };
